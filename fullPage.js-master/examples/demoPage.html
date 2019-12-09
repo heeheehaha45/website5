@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>fullPage.js One Page Scroll Sites</title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage plugin by Alvaro Trigo. Create fullscreen pages fast and simple. One page scroll like iPhone website." />
+    <meta name="keywords" content="fullpage,jquery,alvaro,trigo,plugin,fullscren,screen,full,iphone5,apple" />
+    <meta name="Resource-type" content="Document" />
+
+
+    <link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+
+
+    <style>
+        /* Sections
+		 * --------------------------------------- */
+        
+        #section0 img,
+        #section1 img {
+            margin: 20px 0 0 0;
+        }
+        
+        #section2 img {
+            margin: 20px 0 0 52px;
+        }
+        
+        #section3 img {
+            bottom: 0px;
+            position: absolute;
+            margin-left: -420px;
+        }
+        
+        .intro p {
+            width: 50%;
+            margin: 0 auto;
+            font-size: 1.5em;
+        }
+        
+        .twitter-share-button {
+            position: absolute;
+            z-index: 99;
+            right: 149px;
+            top: 9px;
+        }
+        /* Section 2
+	* --------------------------------------- */
+        
+        #section2 img {
+            position: absolute;
+        }
+        
+        #section2 .imgsContainer,
+        #staticImg .imgsContainer,
+        #section3 .imgsContainer {
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            display: block;
+            margin-top: -288px;
+            margin-left: -636px;
+            width: 0;
+            height: 0;
+            -webkit-transition: all 1.2s ease-in-out;
+            -moz-transition: all 1.2s ease-in-out;
+            -o-transition: all 1.2s ease-in-out;
+            transition: all 1.2s ease-in-out;
+        }
+        
+        #section2.moveUp .imgsContainer {
+            top: 50%;
+        }
+        
+        #section2.moveDown .imgsContainer,
+        #staticImg .imgsContainer {
+            top: 90%;
+        }
+        
+        #section2.active .imgsContainer {
+            top: 50%;
+        }
+        
+        #section2 .box {
+            top: 22%;
+            left: 42%;
+            position: absolute;
+            width: 582px;
+        }
+        
+        #iphone-yellow {
+            top: -35px;
+            left: -222px;
+        }
+        
+        #iphone-red {
+            top: -194px;
+            left: 106px;
+        }
+        
+        #iphone-blue {
+            top: 320px;
+            left: 448px;
+        }
+        
+        #iphone-green {
+            left: 106px;
+            position: absolute;
+        }
+        
+        #staticImg {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 200%;
+            left: 0;
+            width: 100%;
+            min-width: 980px;
+            height: 100%;
+            -webkit-transition: all 0.7s ease-out;
+            -moz-transition: all 0.7s ease-out;
+            -o-transition: all 0.7s ease-out;
+            transition: all 0.7s ease-out;
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+        }
+        
+        #staticImg.moveDown {
+            -webkit-transform: translate3d(0, 100%, 0);
+            -ms-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+        
+        #staticImg.moveUp {
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        
+        #staticImg.moveDown .imgsContainer {
+            top: 50%;
+        }
+        
+        #staticImg.moveDown img {
+            top: 155px;
+        }
+        
+        #staticImg.active .imgsContainer {
+            top: 50%;
+        }
+        
+        #staticImg.active img {
+            top: 487px;
+        }
+        
+        #section3 .fp-tableCell {
+            vertical-align: top;
+        }
+        
+        #menu2 {
+            /*            position: fixed;*/
+            top: 0;
+            left: 0;
+            height: 40px;
+            z-index: 70;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        #menu3 {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 40px;
+            z-index: 70;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+    </style>
+    <!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="../jquery.fullPage.js"></script>
+    <script type="text/javascript" src="examples.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                verticalCentered: false,
+                navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['', '', '', ''],
+
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                menu: '#menu',
+                scrollingSpeed: 1000
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <select id="demosMenu">
+  <option selected>Choose Demo</option>
+  <option id="activeSlide">Active section and slide</option>
+  <option id="apple">Apple iPhone demo (animations)</option>
+  <option id="autoHeight">Auto height</option>
+  <option id="autoplayVideoAndAudio">Autoplay Video and Audio</option>
+  <option id="backgrounds">Background images</option>
+  <option id="backgroundsFixed">Fixed fullscreen backgrounds</option>
+  <option id="backgroundVideo">Background video</option>
+  <option id="callbacks">Callbacks</option>
+  <option id="continuousHorizontal">Continuous horizontal</option>
+  <option id="continuousVertical">Continuous vertical</option>
+  <option id="parallax">Parallax</option>
+  <option id="css3">CSS3</option>
+  <option id="dragAndMove">Drag And Move</option>
+  <option id="easing">Easing</option>
+  <option id="fadingEffect">Fading Effect</option>
+  <option id="fixedHeaders">Fixed headers</option>
+  <option id="gradientBackgrounds">Gradient backgrounds</option>
+  <option id="interlockedSlides">Interlocked Slides</option>
+  <option id="looping">Looping</option>
+  <option id="methods">Methods</option>
+  <option id="navigationV">Vertical navigation dots</option>
+  <option id="navigationH">Horizontal navigation dots</option>
+  <option id="noAnchor">No anchor links</option>
+  <option id="normalScroll">Normal scrolling</option>
+  <option id="normalScrollElements">Normal scroll elements</option>
+  <option id="offsetSections">Offset sections</option>
+  <option id="oneSection">One single section</option>
+  <option id="resetSliders">Reset sliders</option>
+  <option id="responsiveAutoHeight">Responsive Auto Height</option>
+  <option id="responsiveHeight">Responsive Height</option>
+  <option id="responsiveWidth">Responsive Width</option>
+  <option id="responsiveSlides">Responsive Slides</option>
+  <option id="scrollBar">Scroll bar enabled</option>
+  <option id="scrollHorizontally">Scroll horizontally</option>
+  <option id="scrollOverflow">Scroll inside sections and slides</option>
+  <option id="scrollOverflowReset">ScrollOverflow Reset</option>
+  <option id="lazyLoad">Lazy load</option>
+  <option id="scrollingSpeed">Scrolling speed</option>
+</select>
+    <div>
+        <ul id="menu">
+            <li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
+            <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+            <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+            <li data-menuanchor="4thpage"><a href="#4thpage">Fourth slide</a></li>
+        </ul>
+        <!--
+    <ul id="menu2">
+        <li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
+        <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+        <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+        <li data-menuanchor="4thpage"><a href="#4thpage">Fourth slide</a></li>
+    </ul>
+-->
+    </div>
+
+    <div id="fullpage" style="margin-top: 40px">
+
+
+        <div class="section " id="section0">
+
+        </div>
+        <div class="section active" id="section1">
+            <div class="slide">
+                <div class="intro">
+                    <h1>Create Sliders</h1>
+                    <p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
+                    <img src="imgs/slider.png" alt="slider" />
+                </div>
+
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/1.png" alt="simple" />
+                    <h1>Simple</h1>
+                    <p>Easy to use. Configurable and customizable.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/2.png" alt="Cool" />
+                    <h1>Cool</h1>
+                    <p>It just looks cool. Impress everybody with a simple and modern web design!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="intro">
+                    <img src="imgs/3.png" alt="Compatible" />
+                    <h1>Compatible</h1>
+                    <p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section2">
+            	<div class="slide" id="slide1">
+            	<h1>Lovely images <br />for a lovely page</h1>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <h0>Typical keyboard</h0>
+                <input type="hidden" name="id" value="1" />
+                <p>When users user two hands to hold their tablet, it is difficult to touch the keys in the middle zone.</p>
+
+                <!--
+                <h1>Working On Tablets</h1>
+                <p>
+                    Designed to fit to different screen sizes as well as tablet and mobile devices.
+                    <br /><br /><br /><br /><br /><br />
+                </p>
+-->
+                <img style="width:20%;" data-src="imgs/3.png" alt="tablets" />
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

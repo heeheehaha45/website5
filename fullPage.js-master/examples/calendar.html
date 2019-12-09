@@ -1,0 +1,1038 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta charset='utf-8'>
+   
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link rel="stylesheet" href="calendar.css" />
+    <script src="../jquery.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+    
+    <script src="jquery.year_calendar.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		function reloadPage(){
+			var e=document.getElementById("refreshed");
+			if(e.value=="no")
+				e.value="yes";
+			else{
+				e.value="no";
+				location.reload();
+			}
+			
+			
+		}
+	</script>
+
+
+	<script type="text/javascript">
+	var global_date_styles;
+	function initCalendar() {
+	//Days colorify
+	var date_styles = [
+
+
+
+	{ start:new Date(2017,0,1), end:new Date(2017,0,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,7), end:new Date(2017,0,8 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,8), end:new Date(2017,0,9 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,14), end:new Date(2017,0,15 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,15), end:new Date(2017,0,16 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,21), end:new Date(2017,0,22 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,22), end:new Date(2017,0,23 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,28), end:new Date(2017,0,29 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,29), end:new Date(2017,0,30 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,4), end:new Date(2017,1,5 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,5), end:new Date(2017,1,6 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,11), end:new Date(2017,1,12 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,12), end:new Date(2017,1,13 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,18), end:new Date(2017,1,19 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,19), end:new Date(2017,1,20 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,25), end:new Date(2017,1,26 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,26), end:new Date(2017,1,27 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,4), end:new Date(2017,2,5 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,5), end:new Date(2017,2,6 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,11), end:new Date(2017,2,12 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,12), end:new Date(2017,2,13 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,18), end:new Date(2017,2,19 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,19), end:new Date(2017,2,20 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,25), end:new Date(2017,2,26 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,2,26), end:new Date(2017,2,27 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,1), end:new Date(2017,3,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,2), end:new Date(2017,3,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,8), end:new Date(2017,3,9 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,9), end:new Date(2017,3,10 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,15), end:new Date(2017,3,16 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,16), end:new Date(2017,3,17 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,22), end:new Date(2017,3,23 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,23), end:new Date(2017,3,24 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,29), end:new Date(2017,3,30 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,30), end:new Date(2017,4,1 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,6), end:new Date(2017,4,7 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,7), end:new Date(2017,4,8 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,13), end:new Date(2017,4,14 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,14), end:new Date(2017,4,15 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,20), end:new Date(2017,4,21 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,21), end:new Date(2017,4,22 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,27), end:new Date(2017,4,28 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,28), end:new Date(2017,4,29 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,3), end:new Date(2017,5,4 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,4), end:new Date(2017,5,5 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,10), end:new Date(2017,5,11 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,11), end:new Date(2017,5,12 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,17), end:new Date(2017,5,18 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,18), end:new Date(2017,5,19 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,24), end:new Date(2017,5,25 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,5,25), end:new Date(2017,5,26 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,1), end:new Date(2017,6,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,2), end:new Date(2017,6,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,8), end:new Date(2017,6,9 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,9), end:new Date(2017,6,10 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,15), end:new Date(2017,6,16 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,16), end:new Date(2017,6,17 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,22), end:new Date(2017,6,23 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,23), end:new Date(2017,6,24 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,29), end:new Date(2017,6,30 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,6,30), end:new Date(2017,6,31 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,5), end:new Date(2017,7,6 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,6), end:new Date(2017,7,7 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,12), end:new Date(2017,7,13 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,13), end:new Date(2017,7,14 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,19), end:new Date(2017,7,20 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,20), end:new Date(2017,7,21 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,26), end:new Date(2017,7,27 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,7,27), end:new Date(2017,7,28 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,2), end:new Date(2017,8,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,3), end:new Date(2017,8,4 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,9), end:new Date(2017,8,10 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,10), end:new Date(2017,8,11 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,16), end:new Date(2017,8,17 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,17), end:new Date(2017,8,18 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,23), end:new Date(2017,8,24 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,24), end:new Date(2017,8,25 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,8,30), end:new Date(2017,9,1 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,1), end:new Date(2017,9,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,7), end:new Date(2017,9,8 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,8), end:new Date(2017,9,9 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,14), end:new Date(2017,9,15 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,15), end:new Date(2017,9,16 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,21), end:new Date(2017,9,22 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,22), end:new Date(2017,9,23 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,28), end:new Date(2017,9,29 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,29), end:new Date(2017,9,30 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,4), end:new Date(2017,10,5 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,5), end:new Date(2017,10,6 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,11), end:new Date(2017,10,12 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,12), end:new Date(2017,10,13 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,18), end:new Date(2017,10,19 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,19), end:new Date(2017,10,20 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,25), end:new Date(2017,10,26 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,26), end:new Date(2017,10,27 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,2), end:new Date(2017,11,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,3), end:new Date(2017,11,4 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,9), end:new Date(2017,11,10 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,10), end:new Date(2017,11,11 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,16), end:new Date(2017,11,17 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,17), end:new Date(2017,11,18 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,23), end:new Date(2017,11,24 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,24), end:new Date(2017,11,25 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,30), end:new Date(2017,11,31 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,31), end:new Date(2018,0,1 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,1), end:new Date(2017,0,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,28), end:new Date(2017,0,29 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,29), end:new Date(2017,0,30 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,30), end:new Date(2017,0,31 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,4), end:new Date(2017,3,5 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,14), end:new Date(2017,3,15 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,15), end:new Date(2017,3,16 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,1), end:new Date(2017,4,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,3), end:new Date(2017,4,4 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,4,30), end:new Date(2017,4,31 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,1), end:new Date(2017,9,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,2), end:new Date(2017,9,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,5), end:new Date(2017,9,6 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,28), end:new Date(2017,9,29 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,10,2), end:new Date(2017,10,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,8), end:new Date(2017,11,9 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,20), end:new Date(2017,11,21 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,22), end:new Date(2017,11,23 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,24), end:new Date(2017,11,25 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,25), end:new Date(2017,11,26 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,2), end:new Date(2017,0,3 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,0,31), end:new Date(2017,1,1 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,1,1), end:new Date(2017,1,2 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,3,17), end:new Date(2017,3,18 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,3), end:new Date(2017,9,4 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,9,30), end:new Date(2017,9,31 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+
+	{ start:new Date(2017,11,26), end:new Date(2017,11,27 ), label:'public-holiday', title:'public-holiday', color: '#FF6666'},
+	
+	
+{ start:new Date(1999, 8, 1), end:new Date(1999, 11, 1), label:'label-autumn', title:'Autumn 2013', color: '#ffb258' }
+// 	{ start:new Date(2014, 2, 1), end:new Date(2014, 5, 1), label:'label-spring', title:'Spring 2013', color: '#a0d3e3' },
+// 	{ start:new Date(2014, 5, 1), end:new Date(2014, 8, 1), label:'label-summer', title:'Summer 2013', color: '#bed984' },
+// 	{ start:new Date(2014, 8, 1), end:new Date(2014, 11, 1), label:'label-autumn', title:'Autumn 2013', color: '#ffb258' }
+
+
+	];
+
+	
+	global_date_styles=date_styles;
+	
+	
+	//Events to click
+	var events = [
+		/* { _id: '1', start:new Date(2012, 11, 29, 12, 0 ,0), end:new Date(2013, 0, 12, 12, 0 ,0), title:'Winter school vacation', type: 'type-1' },
+		{ _id: '2', start:new Date(2013, 2, 23, 12, 0 ,0), end:new Date(2013, 2, 30, 12, 0 ,0), title:'Spring school vacation', type: 'type-2' },
+		{ _id: '3', start:new Date(2013, 10, 2, 12, 0 ,0), end:new Date(2013, 10, 9, 12, 0 ,0), title:'Autumn school vacation', type: 'type-3' },
+		{ _id: '4', start:new Date(2013, 11, 28, 12, 0 ,0), end:new Date(2014, 0, 11, 12, 0 ,0), title:'Winter school vacation', type: 'type-4' } */
+	];
+
+	//Orange corners
+	var markers = [
+		// { date:new Date(2013, 0, 1), title: 'New year'},
+		// { date:new Date(2013, 0, 7), title: 'Christmas'},
+		// { date:new Date(2013, 1, 23), title: 'Army day'},
+		// { date:new Date(2013, 2, 8), title: 'Women\'s day'},
+		// { date:new Date(2013, 4, 1), title: 'Labor day'},
+		// { date:new Date(2013, 4, 9), title: 'Victory day'},
+		// { date:new Date(2013, 5, 12), title: 'Independence day'},
+		// { date:new Date(2013, 10, 4), title: 'Reconciliation day'},
+		// { date:new Date(2014, 0, 1), title: 'New year'},
+		// { date:new Date(2014, 0, 7), title: 'Christmas'}
+	];
+
+	var event_click = function(evt) {
+		var _id = evt.data('_id');
+		$.each(events, function(i, e) {
+			if (e._id == _id)
+				alert(e.title);
+		});
+	}
+
+	var range_select = function(day1, day2) {
+		var d1 = new Date(day1.data('date'));
+		var d2 = new Date(day2.data('date'));
+		d1.setHours(12,0);
+		d2.setHours(12,0);
+		selected_range_start = d1;
+		selected_range_end = d2;
+	}
+
+	var range_unselect = function() {
+		selected_range_start = false;
+		selected_range_end = false;
+	}
+
+	var marker_click = function(evt) {
+		alert(evt.data('title'));
+	}
+
+	$("#calendar-holder").year_calendar({
+		year: 2017, // Optional, defaults to current year - pass in a year - Integer or String
+		scroll_to_date: true, // Scroll to the current date?,
+		date_styles: date_styles,
+		events: events,
+		event_click: event_click,
+		//day_click: day_click,
+		range_select: range_select,
+		range_unselect: range_unselect,
+		markers: markers,
+		marker_click: marker_click
+	});
+}
+
+$(document).ready(function() {
+	initCalendar();
+	
+// 	alert("注意:閣下進入了年假系統的測試版本。");
+	
+	var cod_fArr=new Array();
+	
+	
+			$('.cod_f0').attr("title","因病缺勤");
+		
+		
+	
+			$('.cod_f0').attr("title","年假");
+		
+		
+})
+
+	
+	
+</script>
+	
+	
+   <link rel="stylesheet" href="styles.css">
+   <!--[if lt IE 9]>
+   <link rel="stylesheet" type="text/css" href="ie6-and-up.css" />
+   <![endif]-->
+   
+   <!--[if IE 8]>
+	<link rel="stylesheet" type="text/css" href="ie8.css" />
+<![endif]-->
+
+
+
+
+
+  <!-- tabs -->
+  <link href="jquery-ui.css" rel="stylesheet">
+
+
+
+  <!-- Including jQuery Date UI with CSS -->
+<!--   <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+
+  
+    <!-- jQuery Code executes on Date Format option  -->
+   <script src="js/script.js"></script>
+   <link rel="stylesheet" href="css/style.css">
+
+   <!-- css and script for expandable areas -->
+   <script src="expand.js"></script>
+<link rel="stylesheet" href="expand.css">
+   
+  <style type="text/css">
+  	.holi_list{
+  	    padding: 0 0 0 0;
+    	margin: 0px 0 0 92px;
+    	list-style-type: none;
+  	
+  	}
+  
+	.ui-widget-content{
+		border:none ;
+	
+	}
+	
+	.ui-widget-header{
+	
+		background: none ;
+	
+	}
+   </style>
+</head> 
+<script>
+function loadPtype(){
+	$('.p_typeL').text('L');
+	
+}
+</script>
+
+<body onload="reloadPage();$('.label-spring').text('&nbsp;X');">
+<input id='langsel' type='hidden' value="C">
+<input id='lang_select_holi' type='hidden' value="選擇假期">
+<input id='enterContinousHoli' type='hidden' value="請選擇連續的假期!">
+<input id='notUsedHoli2' type='hidden' value="請選擇未被享用的假期。">
+<input id='notChangedHoli2' type='hidden' value="請選擇未被更改的假期。">
+
+
+
+
+
+
+
+
+	
+
+
+<!-- <div  style="margin-left: 100px;"> -->
+<div  style="">
+
+<div id="header" style="width:800px;">
+	<div style="float:left;">
+
+
+
+
+	</div>
+	<div style="float:left;">
+
+	</div>
+
+	<div style="float: left;margin-left: 105px;">
+<!-- 	&NBSP;&NBSP;&NBSP;&NBSP;&NBSP;&NBSP; &NBSP;&NBSP;&NBSP;&NBSP;&NBSP;&NBSP; &NBSP;&NBSP;&NBSP;&NBSP;&NBSP;&NBSP; -->
+	
+	</div>
+	
+	<hr style=" clear: both;width: 1175px;">
+</div>
+
+
+</div>
+
+
+
+<div id="main">
+
+	
+
+
+
+
+</div>
+
+<!--<div id="selectedRange">-->
+<!-- 選擇假期: -->
+<!--</div>-->
+<div id="calendar-holder" style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;' 
+ unselectable='on'
+ onselectstart='return false;' 
+ onmousedown='return false;'>
+</div>
+
+
+<input type="button" value="Clear selections" onClick="window.location.reload()">
+
+
+<div id="title" style="display:none;"><img src="title.jpg"></div>
+
+
+
+
+
+<input type="hidden" id="refreshed" value="no">
+
+
+
+
+<!-- <script src="external/jquery/jquery.js"></script> -->
+<script src="jquery-ui.js"></script>
+<script>
+function func(){
+	alert("hello");
+}
+
+function dateDiff(dateold, datenew)
+{
+  var ynew = datenew.getFullYear();
+  var mnew = datenew.getMonth();
+  var dnew = datenew.getDate();
+  var yold = dateold.getFullYear();
+  var mold = dateold.getMonth();
+  var dold = dateold.getDate();
+  var diff = ynew - yold;
+//   alert(datenew);
+//   alert(dateold);
+  if(mold > mnew)
+      diff--;
+  else
+  {
+    if(mold == mnew)
+    {
+      if(dold > dnew) diff--;
+    }
+  }
+  
+  return diff;
+}
+
+//parse a date in mm/dd/yyyy format
+
+function parseDate(input) {
+  var parts = input.split('/');
+  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+  //alert(parts[2]+(parts[0]-1)+parts[1]);
+  return new Date(parts[2],(parts[0]-1),parts[1]); // Note: months are 0-based
+}
+
+//parse a date in dd/mm/yyyy format
+function parseDate2(input) {
+	  var parts = input.split('/');
+	  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+	  return new Date(parts[2],parts[1]-1,parts[0]); // Note: months are 0-based
+	}
+
+//also compare the input dates and returns if the dates are asccending
+function insertIntoChangeDateStrArr(changeHolidayFromDate1,changeHolidayToDate1,changeDateStrArr){
+    //tmp2: start change holiday
+    //tmp3: end change holiday
+    //console.log("inside func");
+    var tmp2=parseDate2(changeHolidayFromDate1);
+    var tmp3=parseDate2(changeHolidayToDate1);
+//     if(tmp2>tmp3)
+//     	return false;
+    var oneDay = 24*60*60*1000; 
+	var diffDays = Math.round(Math.abs((tmp2.getTime() - tmp3.getTime())/(oneDay)));
+	diffDays++;	//remember the diffDays are designed for [start:.. end...] format...so add one to diffDays
+//     var changeDateStrArr=[];
+    var tmp4=new Date(tmp2);
+    
+
+    
+    //push change holidays into changeDateStrArr
+	for(var j=0;j<diffDays;j++){
+	//	console.log(tmp4);
+		changeDateStrArr.push(tmp4.getTime());
+		tmp4.setDate(tmp4.getDate()+1);
+	}
+    
+//     return true;
+}
+
+function checkAscendDates(changeHolidayFromDate1,changeHolidayToDate1){
+	    var tmp2=parseDate2(changeHolidayFromDate1);
+	    var tmp3=parseDate2(changeHolidayToDate1);
+	    if(tmp2>tmp3)
+	    	return false;
+	    else 
+	    	return true;
+}
+
+function validateFormTran(btn){
+	
+	if(typeof String.prototype.trim !== 'function') {
+		  String.prototype.trim = function() {
+		    return this.replace(/^\s+|\s+$/g, ''); 
+		  }
+	}
+	
+	
+// 	console.log ($(btn).siblings(".selectList:visible").html());
+	if(! $(btn).siblings(".selectList:visible").html().trim() )
+		return false;
+	
+	
+/////////for those who works for less than 1 year
+	var today = new Date();
+	
+
+   
+    var entryDate='2015-07-27';
+	
+	
+
+	var parts = entryDate.split('-');
+	  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+	var oldDay=new Date(parts[0],(parts[1]-1),parts[2]); 
+
+// 	var yearsApart=dateDiff(oldDay, newDay);
+    var yearsApart=dateDiff(oldDay, today);
+   
+	if(yearsApart<1){
+// 		alert("本系統使用對象限制於工作滿一年的行政人員。");
+		alert("本系統使用對象限制於工作滿一年的行政人員。");
+    	return false;
+	}
+    ////////////////////////////////
+	
+	
+		
+}
+
+
+function validateForm() {
+// 	alert("hello");
+// 	alert(global_date_styles[0].start);
+	var paper_docs_id;
+	
+		
+	
+	var x=$('[name="fromDate"]').val();
+    if (x==null || x=="") {
+//         alert("請輸入申請日期");
+        alert("請輸入申請日期");
+        
+        return false;
+    }
+    x = $('[name="toDate"]').val();
+    if (x==null || x=="") {
+//         alert("請選擇連續的申請日期");
+        alert("請選擇連續的申請日期");
+        return false;
+    }
+    x = $('[name="applType"]').val();
+    if (x==null || x=="") {
+        alert("x="+x+"請選擇假期類別");
+        return false;
+    }
+    
+    
+    /////////for those who works for less than 1 year
+    x=$('[name="fromDate"]').val();
+    var entryDate='2015-07-27';
+	
+	var newDay=parseDate(x);
+	//alert("entryDate="+entryDate);
+	var parts = entryDate.split('-');
+	  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+	var oldDay=new Date(parts[0],(parts[1]-1),parts[2]); 
+
+	  
+    var yearsApart=dateDiff(oldDay, newDay);
+   
+	if(yearsApart<1){
+// 		alert("本系統使用對象限制於工作滿一年的行政人員。");
+		alert("本系統使用對象限制於工作滿一年的行政人員。");
+    	return false;
+	}
+    ////////////////////////////////
+    
+    //check if 
+    
+    
+    
+    x =  $( "#choice2" ).is(":checked");
+ 	var y = $.trim($("[name=preHolidayRemarks]").val()) ;
+ 	
+ 	////////////////
+
+//  	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+//  	Date today = new Date();
+// //  	System.out.println("java today="+sdf.format(today));
+
+
+// //  	console.log("today="+today.toString());
+//  	var fillReason=true; 
+ 	
+//  	var startDate=today;
+// 	var endDate=parseDate($('[name="fromDate"]').val());
+	
+// 	var oneDay = 24*60*60*1000; 
+// 	var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)));
+ 	
+//  	if (diffDays>=8)
+//  		fillReason=false;
+//  	else 
+//  		fillReason=true;
+	
+ 	////////////////
+ 	
+    if (x==true && y==""){
+//     	alert("請填寫申請提前年假原因");
+//     	return false;
+    }
+    
+    x =  $( "#changeHoliBox" ).is(":checked");
+    var y = $.trim($("[name=changeHolidayRemarks]").val()) ;
+    if (x==true && y==""){
+//     	alert("請填寫改假原因");
+    	alert("請填寫改假原因");
+    	return false;
+    }
+    
+	
+
+	if (x==true){
+	    y = $('[name="changeHolidayFromDate1"]').val();
+	    z = $('[name="changeHolidayToDate1"]').val();	
+	    if ( (y==null || y==""||z==null || z=="") ){
+// 	    	alert("請填寫改假日期");
+			alert("請填寫改假日期");
+	    	return false;
+	    }
+		if( (y=="" && x!="")||(y!="" && x=="")){
+// 			alert("請填寫改假日期");
+			alert("請填寫改假日期");
+			return false;
+		}
+		
+		y = $('[name="changeHolidayFromDate2"]').val();
+	    z = $('[name="changeHolidayToDate2"]').val();	
+	  
+		if( (y.length==0 && z.length!=0)||(y.length!=0 && z.length==0)){
+// 			alert("請填寫改假日期");
+			alert("請填寫改假日期");
+			return false;
+		}
+		y = $('[name="changeHolidayFromDate3"]').val();
+	    z = $('[name="changeHolidayToDate3"]').val();
+	    if( (y.length==0 && z.length!=0)||(y.length!=0 && z.length==0)){
+// 			alert("請填寫改假日期");
+			alert("請填寫改假日期");
+			return false;
+		}
+	}
+	
+	
+
+
+    ////////////////////////// for handling the input dates in changeholiday   
+    var changeHolidayFromDate1= $('[name="changeHolidayFromDate1"]').val();
+    var changeHolidayFromDate2= $('[name="changeHolidayFromDate2"]').val();
+    var changeHolidayFromDate3= $('[name="changeHolidayFromDate3"]').val();
+    
+    var changeHolidayToDate1= $('[name="changeHolidayToDate1"]').val();
+    var changeHolidayToDate2= $('[name="changeHolidayToDate2"]').val();
+    var changeHolidayToDate3= $('[name="changeHolidayToDate3"]').val();
+    var diffDays;
+    var changeDateStrArr=[];
+    //tmp2: start change holiday
+    //tmp3: end change holiday
+//     var tmp2=parseDate2(changeHolidayFromDate1);
+//     var tmp3=parseDate2(changeHolidayToDate1);
+//     var oneDay = 24*60*60*1000; 
+// 	var diffDays = Math.round(Math.abs((tmp2.getTime() - tmp3.getTime())/(oneDay)));
+// 	diffDays++;	//remember the diffDays are designed for [start:.. end...] format...so add one to diffDays
+//     var changeDateStrArr=[];
+//     var tmp4=new Date(tmp2);
+    
+//     //push change holidays into changeDateStrArr
+// 	for(var j=0;j<diffDays;j++){
+// 		changeDateStrArr.push(tmp4.getTime());
+// 		tmp4.setDate(tmp4.getDate()+1);
+// 	}
+
+	//console.log("changeHolidayFromDate2="+changeHolidayFromDate2);
+	//console.log("changeHolidayFromDate3="+changeHolidayFromDate3);
+    var isAscendDates;
+    
+    isAscendDates=checkAscendDates(changeHolidayFromDate1,changeHolidayToDate1);
+    if(changeHolidayFromDate2.length!=0){
+    	isAscendDates=isAscendDates && checkAscendDates(changeHolidayFromDate2,changeHolidayToDate2);
+    }
+    if(changeHolidayFromDate3.length!=0){
+    	isAscendDates=isAscendDates && checkAscendDates(changeHolidayFromDate3,changeHolidayToDate3);
+
+    }
+    if (isAscendDates==false){
+//     	alert("更改年假日期:結束日期早於開始日期");
+    	alert("更改年假日期:結束日期早於開始日期");
+    	return false;
+    }
+    
+    insertIntoChangeDateStrArr(changeHolidayFromDate1,changeHolidayToDate1,changeDateStrArr);
+    if(changeHolidayFromDate2.length!=0)
+    	insertIntoChangeDateStrArr(changeHolidayFromDate2,changeHolidayToDate2,changeDateStrArr);
+    if(changeHolidayFromDate3.length!=0)
+    	insertIntoChangeDateStrArr(changeHolidayFromDate3,changeHolidayToDate3,changeDateStrArr);
+    
+
+    	
+    
+
+    //for every range of {start:... end:...}
+	$('#js_msg2').val("");	
+    for(var i=0;i<global_date_styles.length;i++){
+	
+    	if(global_date_styles[i].title=="applied_hol" || global_date_styles[i].title=="from_change_hol"){
+			
+			var startDate=new Date(global_date_styles[i].start);
+			var endDate=new Date(global_date_styles[i].end);
+			
+			var oneDay = 24*60*60*1000; 
+			
+			diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)));
+			var tmp=new Date(startDate);
+			
+			for(var j=0;j<diffDays;j++){
+				if( $.inArray(tmp.getTime(),changeDateStrArr)!=-1 ){
+//					alert("selected days are applied holidays");
+					if(global_date_styles[i].title=="applied_hol")
+// 						$('#js_msg2').val("更改年假日期:請選擇未被享用的假期。");
+						// if the following is uncommented,the one who has applied cod_f=2 holiday in a crossed box cannot change the cross to somewhere else
+
+
+						
+						
+						
+					if(global_date_styles[i].title=="from_change_hol")
+// 						$('#js_msg2').val("更改年假日期:請選擇未被更改的假期。");
+						$('#js_msg2').val("??? 更改年假日期:請選擇未被更改的假期。 ???");
+
+				}
+//				dateArr.push(tmp.getTime());
+				tmp.setDate(tmp.getDate()+1);
+			}
+		}
+	}
+    
+    if( $( "#changeHoliBox" ).is(":checked") ){
+	    var msg2=$("#js_msg2").val();
+	    if (msg2!=""){
+	    	alert(msg2);
+	    	return false;
+	    }
+    }
+// return false;    
+/////////////////////////
+    
+    
+    
+    var msg=$("#js_msg").val();
+    if(msg=="請選擇未被享用的假期。")
+    	msg="請選擇未被享用的假期。";
+    else if(msg=="請選擇未被更改的假期。")
+    	msg="請選擇未被更改的假期。";
+    else if(msg=="所選日期為假日，請重新輸入。")
+    	msg="所選日期為假日，請重新輸入。";
+    	
+    	
+    if (msg!=""){
+    	alert(msg);
+    	return false;
+    }
+    
+    
+    
+}
+
+$( "#accordion" ).accordion();
+
+
+
+var availableTags = [
+  "ActionScript",
+  "AppleScript",
+  "Asp",
+  "BASIC",
+  "C",
+  "C++",
+  "Clojure",
+  "COBOL",
+  "ColdFusion",
+  "Erlang",
+  "Fortran",
+  "Groovy",
+  "Haskell",
+  "Java",
+  "JavaScript",
+  "Lisp",
+  "Perl",
+  "PHP",
+  "Python",
+  "Ruby",
+  "Scala",
+  "Scheme"
+];
+$( "#autocomplete" ).autocomplete({
+  source: availableTags
+});
+
+
+
+$( "#button" ).button();
+$( "#radioset" ).buttonset();
+
+
+
+$( "#tabs" ).tabs();
+
+
+
+$( "#dialog" ).dialog({
+  autoOpen: false,
+  width: 400,
+  buttons: [
+    {
+      text: "Ok",
+      click: function() {
+        $( this ).dialog( "close" );
+      }
+    },
+    {
+      text: "Cancel",
+      click: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  ]
+});
+
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+  $( "#dialog" ).dialog( "open" );
+  event.preventDefault();
+});
+
+
+
+$( "#datepicker" ).datepicker({
+  inline: true
+});
+
+
+
+$( "#slider" ).slider({
+  range: true,
+  values: [ 17, 67 ]
+});
+
+
+
+$( "#progressbar" ).progressbar({
+  value: 20
+});
+
+
+
+$( "#spinner" ).spinner();
+
+
+
+$( "#menu" ).menu();
+
+
+
+$( "#tooltip" ).tooltip();
+
+
+
+$( "#selectmenu" ).selectmenu();
+
+
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+  function() {
+    $( this ).addClass( "ui-state-hover" );
+  },
+  function() {
+    $( this ).removeClass( "ui-state-hover" );
+  }
+);
+
+
+
+
+
+$(function() {
+    $('#datepicker').datepicker({
+      autoSize: true,
+      onSelect: function (dateText, inst) {
+       alert("hello");
+      }
+    });
+  });
+
+
+
+</script>
+</body>
+</html>

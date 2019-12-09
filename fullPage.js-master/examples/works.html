@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage full-screen normal scrolling with autoScrolling." />
+    <meta name="keywords" content="fullpage,jquery,demo,screen,fullscreen,lazyload,lazy,passive,load,src,data-src,media" />
+    <meta name="Resource-type" content="Document" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+    <style>
+        /* Style for our header texts
+    * --------------------------------------- */
+        
+        h1 {
+            font-size: 5em;
+            font-family: arial, helvetica;
+            color: #fff;
+            margin: 0;
+        }
+        
+        .intro p {
+            /*            color: #fff;*/
+        }
+        /* Centered texts in each section
+    * --------------------------------------- */
+        
+        .section {
+            text-align: center;
+        }
+        /* Bottom menu
+    * --------------------------------------- */
+        
+        #infoMenu li a {
+            color: #fff;
+        }
+        /* Lazy loading background
+    * --------------------------------------- */
+        
+        #section2.load-background {
+            /*            background-image: url(imgs/bg2.jpg);*/
+        }
+        
+        .imageContainer {
+            position: relative;
+        }
+        
+        .bottomImg {
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .intro p {
+            /*            color: #000;*/
+            width: 65%;
+            font-size: 1.1em;
+        }
+        
+        .intro h2 {
+            font-size: 200%;
+        }
+        
+        body {
+            /*font-family: 'Source Sans Pro', sans-serif;*/
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            /*
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+*/
+        }
+        
+        .mediumSize {
+            font-size: 80%;
+        }
+        
+        h2,
+        p {
+            color: white;
+        }
+        
+        #section0 {
+            /*		    background-image: url(imgs/Wallpaper.jpg);*/
+            /*             background-color: rgba(255, 0, 0, 0.3);*/
+        }
+        
+        #section1 {
+            /*		    background-image: url(imgs/Wallpaper.jpg);*/
+        }
+        
+        body {
+            /*            background-image: url(imgs/Wallpaper.jpg);*/
+        }
+        
+        #fp-nav ul li a span,
+        .fp-slidesNav ul li a span {
+            background: #fff;
+        }
+        
+        #header,
+        #footer {
+            position: fixed;
+            height: 50px;
+            display: block;
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            z-index: 9;
+            text-align: center;
+            color: #f2f2f2;
+            padding: 20px 0 0 0;
+        }
+        
+        #header {
+            top: 0px;
+        }
+        
+        #footer {
+            bottom: 0px;
+        }
+        
+        #img1:hover {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img1 {
+            max-width: 100%;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img2:hover {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img2 {
+            max-width: 100%;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img3:hover {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img3 {
+            max-width: 100%;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img4:hover {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        
+        #img4 {
+            max-width: 100%;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+    </style>
+
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+    <script src="../jquery.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="../vendors/scrolloverflow.js"></script>
+
+    <script type="text/javascript" src="../jquery.fullPage.js"></script>
+    <script type="text/javascript" src="examples.js"></script>
+
+    <link href="metro.css" rel="stylesheet">
+
+    <script src="metro.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                menu: '#menu',
+                anchors: ['firstPage', 'secondPage', '3rdPage'],
+                //                sectionsColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
+                //                sectionsColor: ['#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000'],
+                onLeave: function(index, nextIndex, direction) {
+                    if (nextIndex === 3) {
+                        var destinationSection = $('.section').eq(nextIndex - 1);
+                        destinationSection.addClass('load-background');
+                    }
+                },
+                navigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['', '', '', ''],
+                //                fadingEffect:true,
+                fadingEffect: 'slides',
+                fadingEffect: 'sections'
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <ul id="menu">
+        <li data-menuanchor="firstPage"><a href="keyboard.html">Keyboard design</a></li>
+        <li data-menuanchor="secondPage"><a href="manager_tool.html">Social network/Email for manager </a></li>
+        <li data-menuanchor="3rdPage"><a href="scylla.html">Cloud extension</a></li>
+        <li data-menuanchor="4rdPage" class="active2"><a href="works.html">Other designs</a></li>
+
+    </ul>
+
+    <div id="header"></div>
+
+    <div id="fullpage">
+        <div class="section" id="section0" style="clear:both">
+            <div class="intro">
+                <!--
+                <div style="float:left">
+                    <a class="aligncenter" target="_blank" href="http://portal.dsej.gov.mo/webdsejspace/internet/category/youth/Inter_main_page.jsp">
+                        <img id="img1" style="width:35em" src="imgs/port1.png" alt="" />
+                    </a>
+                </div>
+                <div style="float:left">
+                    <a class="aligncenter" target="_blank" href="calendar.html">
+                        <img id="img3" style="width:15em" data-src="imgs/port3.png" alt="" id="" />
+                    </a>
+                </div>
+                <div style="float:right">
+                    <a class="aligncenter" target="_blank" href="http://www.oocl.com/eng/Pages/default.aspx">
+                        <img id="img2" style="width:35em" src="imgs/port2.png" alt="" id="" />
+                    </a>
+                </div>
+
+
+-->
+                <div style="width:61em; margin:0 auto;">
+                    <div style="float:left;width:35em;height:100px;background:green">
+                        <div style="background:orange">
+                            <a class="" target="_blank" href="http://portal.dsej.gov.mo/webdsejspace/internet/category/youth/Inter_main_page.jsp">
+                                <img id="img1" style="width:35em" src="imgs/port1.png" alt="" />
+                            </a>
+
+                        </div>
+                        <div>
+                           <a class="" target="_blank" href="http://www.oocl.com/eng/Pages/default.aspx">
+                                <img id="img2" style="width:35em" src="imgs/port2.png" alt="" />
+                            </a>
+
+                        </div>
+                    </div>
+                    <div style="float:left;width:12.5em;background:blue">
+                                                    <a class="" target="_blank" href="calendar.html">
+
+                            <img id="img3" style="width:15em" data-src="imgs/port3.png" alt="" />
+                        </a>
+
+
+                    </div>
+                    <div style="float:left;width:10.5em;background:blue">
+                        <a class="" target="_blank" href="millionaire.apk">
+
+                                                <img id="img4" style="width:15em" data-src="imgs/port4.png" alt="" />
+                    </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

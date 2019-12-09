@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>   
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+       <style type="text/css">
+          .button{
+              width:50px;
+/*              height:60px;*/
+               height:11.11vh;
+              background: grey;
+              text-align: center;
+          }
+           .space_button{
+              width:50px;
+/*              height:60px;*/
+               height:100vh;
+              background: grey;
+              text-align: center;
+          }
+      
+           #text{
+               padding: 10px 10px 10px 10px;
+           }
+      </style>
+      
+      <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+      
+  </head>
+
+    <body style='margin:0 0 0 0'>
+        
+        
+    <div id="keyboard" >
+        <div class="container" style="float:left;background:black;height:1000px;">
+            <div style="float:left;
+<!--                margin-top:70px;-->
+                ">
+
+                <div class="button">
+                <span>Q</span>
+                </div>
+                <div class="button">
+                <span>W</span>
+                </div>
+                <div class="button">
+                <span>A</span>
+                </div>
+                <div class="button">
+                <span>S</span>
+                </div>
+                <div class="button">
+                <span></span>
+                </div>
+                <div class="button">
+                <span>Z</span>
+                </div>
+                <div class="button">
+                <span>X</span>
+                </div>
+                <div class="button">
+                <span></span>
+                </div>
+
+            </div>
+            <div style="float:left;background:black;
+<!--                margin-top:70px;-->
+                ">
+
+                <div class="button">
+                <span>E</span>
+                </div>
+                <div class="button">
+                <span>R</span>
+                </div>
+                <div class="button">
+                <span>T</span>
+                </div>
+                <div class="button">
+                <span>D</span>
+                </div>
+                <div class="button">
+                <span>F</span>
+                </div>
+                <div class="button">
+                <span>G</span>
+                </div>
+                <div class="button">
+                <span>C</span>
+                </div>
+                <div class="button">
+                <span>V</span>
+                </div>
+
+            </div>
+             <div style="float:left;background:black;
+<!--                margin-top:70px;-->
+                ">
+
+                <div class="space_button" style="padding-top:50vh;margin-left:2px;height:50vh;width:30px;font-size: 12px;">
+                <span>space</span>
+                </div>
+            
+            </div>
+        </div>
+        
+        
+        <div id='text' style="float:left;background:yellow">     
+        </div>
+        
+        <div class="container" style="float:right;background:black;height:1000px;overflow:display">
+
+            <div style="float:right;background:black;
+<!--               margin-top:70px;-->
+               ">
+                <div class="button">
+                <span>P</span>
+                </div>
+                <div class="button">
+                <span>O</span>
+                </div>
+                <div class="button">
+                <span>I</span>
+                </div>
+                <div class="button">
+                <span>L</span>
+                </div>
+                <div class="button">
+                <span>J</span>
+                </div>
+                <div class="button">
+                <span>N</span>
+                </div>
+                <div class="button">
+                <span>M</span>
+                </div>
+                <div class="button">
+                <span></span>
+                </div>
+                <div class="button">
+                <span></span>
+                </div>
+
+            </div>
+
+            <div style="float:right;background:black;
+<!--               margin-top:70px;-->
+               ">
+                <div class="button">
+                <span>Y</span>
+                </div>
+                <div class="button">
+                <span>U</span>
+                </div>
+                <div class="button">
+                <span></span>
+                <span></span>
+                </div>
+                <div class="button">
+                <span>K</span>
+                </div>
+                <div class="button">
+                <span>H</span>
+                </div>
+                <div class="button">
+                <span>Enter</span>
+                </div>
+                <div class="button">
+                <span>B</span>
+                </div>
+                <div class="button">
+                <span>.</span>
+                </div>
+                <div class="button">
+                <span>/</span>
+                </div>
+      
+
+            </div>
+            <div style="float:right;background:black;
+<!--               margin-top:70px-->
+               ;">
+                <div class="button" style="padding-top:15vh;margin:0 2px 2px 0;height:15vh;width:30px;font-size: 12px;">
+                     <span>back</span>
+                </div> 
+                <div class="button" style="padding-top:30vh;margin-right:2px;height:40vh;width:30px;font-size: 12px;">
+                     <span>space</span>
+                </div>
+            </div>
+        </div>
+  </div>
+    
+  </body>
+    <script>
+        $("#keyboard .button").on("click touchstart",function(e){
+            var char=$(this).text().trim() ;
+//            console.log(char);
+            if(char=="space")
+                $("#text").append( " " );
+            else if(char=="back"){
+                var str=$("#text").text().trim();
+                str=str.slice(0, -1);
+                 $("#text").text(   str );
+            }
+            else
+                $("#text").append(   char );
+          
+            e.preventDefault(); 
+        })
+    </script>
+    
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage full-screen normal scrolling with autoScrolling." />
+    <meta name="keywords" content="fullpage,jquery,demo,screen,fullscreen,lazyload,lazy,passive,load,src,data-src,media" />
+    <meta name="Resource-type" content="Document" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+    <style>
+        /* Style for our header texts
+    * --------------------------------------- */
+        
+        h1 {
+            font-size: 5em;
+            font-family: arial, helvetica;
+            color: #fff;
+            margin: 0;
+        }
+        
+        .intro p {
+            /*            color: #fff;*/
+        }
+        /* Centered texts in each section
+    * --------------------------------------- */
+        
+        .section {
+            text-align: center;
+        }
+        /* Bottom menu
+    * --------------------------------------- */
+        
+        #infoMenu li a {
+            color: #fff;
+        }
+        /* Lazy loading background
+    * --------------------------------------- */
+        
+        #section2.load-background {
+            /*            background-image: url(imgs/bg2.jpg);*/
+        }
+        
+        .imageContainer {
+            position: relative;
+        }
+        
+        .bottomImg {
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .intro p {
+            /*            color: #000;*/
+            width: 65%;
+            font-size: 1.1em;
+        }
+        
+        .intro h2 {
+            font-size: 200%;
+        }
+        
+        body {
+            /*font-family: 'Source Sans Pro', sans-serif;*/
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            /*
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+*/
+        }
+        
+        .mediumSize {
+            font-size: 80%;
+        }
+        
+        h2,
+        p {
+            color: white;
+        }
+        
+        #section0 {
+            /*		    background-image: url(imgs/Wallpaper.jpg);*/
+            /*             background-color: rgba(255, 0, 0, 0.3);*/
+        }
+        
+        #section1 {
+            /*		    background-image: url(imgs/Wallpaper.jpg);*/
+        }
+        
+        body {
+            background-image: url(imgs/Wallpaper.jpg);
+        }
+        
+        #fp-nav ul li a span,
+        .fp-slidesNav ul li a span {
+            background: #fff;
+        }
+        
+        #header, #footer{
+		position:fixed;
+		height: 50px;
+		display:block;
+		width: 100%;
+		background: rgba(0, 0, 0, 0) ;
+		z-index:9;
+		text-align:center;
+		color: #f2f2f2;
+		padding: 20px 0 0 0;
+	}
+
+	#header{
+		top:0px;
+	}
+	#footer{
+		bottom:0px;
+	}
+        
+        
+        
+        
+    </style>
+
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+
+       <script src="../jquery.min.js"></script>
+    <script src="../jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="../vendors/scrolloverflow.js"></script>
+
+    <script type="text/javascript" src="../jquery.fullPage.js"></script>
+    <script type="text/javascript" src="examples.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                menu: '#menu',
+                anchors: ['firstPage', 'secondPage', '3rdPage'],
+                //                sectionsColor: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
+                //                sectionsColor: ['#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000'],
+                onLeave: function(index, nextIndex, direction) {
+                    if (nextIndex === 3) {
+                        var destinationSection = $('.section').eq(nextIndex - 1);
+                        destinationSection.addClass('load-background');
+                    }
+                },
+                navigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['', '', '', ''],
+                //                fadingEffect:true,
+                fadingEffect: 'slides',
+                fadingEffect: 'sections'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <ul id="menu">
+        <li data-menuanchor="firstPage" ><a href="keyboard.html">Keyboard design</a></li>
+        <li data-menuanchor="secondPage"><a href="manager_tool.html">Social network/Email for manager </a></li>
+        <li data-menuanchor="3rdPage" class="active2"><a href="scylla.html">Cloud extension</a></li>
+        <li data-menuanchor="4rdPage"><a href="works.html">Other designs</a></li>
+
+    </ul>
+    
+    <div id="header"></div>
+
+    <div id="fullpage">
+        <div class="section" id="section0">
+            <div class="intro">
+                <br>
+                <h2>New Concepts About Cloud Computing</h2><br>
+                <p>Extend computer cluster power by using home/office PCs</p>
+                <img style="width:1px;visibility: hidden" data-src="imgs/scylla2.png" alt="" id="" />
+                <img style="width:1px;visibility: hidden" data-src="imgs/scylla1.png" alt="" id="" />
+
+            </div>
+        </div>
+
+        <div class="section" id="section1">
+            <div class="intro mediumSize">
+                <br>
+                <img style="width:45em" data-src="imgs/scylla2.png" alt="" id="" />
+
+                <!--
+                <h2>• Most CPU resources <br>are not fully utilized in home or office all the time</h2><br>
+                <h2>• At the same time,
+                    <BR>cloud service providers require a large amount of computation power</h2>
+                                <p>My design aims at putting all the keys in two-sides, with each side having around 2 columns so the user do not need to touch the middle zone. </p>
+
+                <br>
+-->
+            </div>
+        </div>
+        <div class="section" id="section2">
+            <div class="intro">
+
+                <img style="width:45em" data-src="imgs/scylla1.png" alt="" id="" />
+
+                <br>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="intro">
+                <br>
+                <h2>Adventages</h2><br><br>
+                <h2>• Normal PC will be upgraded every one or two years</h2>
+                <br><br>
+                <h2>• Save electricity fee of computing & water fee for cooling</h2>
+                <br><br>
+                <h2>• Save space </h2>
+
+
+                <!--                <h2>My keyboard design</h2><br>-->
+
+                <br>
+            </div>
+        </div>
+        <div class="section" id="section4">
+            <div class="intro">
+                <br>
+                <h2>• Datacenter grows dynamically based on requirement</h2>
+                <br><br>
+                <h2>• May apply it to Hadoop</h2>
+                <br>
+                <br>
+                <p>• Poor countries can sell their computation power to rich countries </p>
+                <p>e.g. India sells to America: both get benefits as a small amount of US dollar cost a lot to Indian</p>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>
